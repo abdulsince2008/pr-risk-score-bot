@@ -1,0 +1,36 @@
+name: 'PR Risk Score Bot'
+description: 'Computes a PR risk score from diff size, historical bug density, and test coverage changes'
+author: ''
+inputs:
+  github-token:
+    description: 'GitHub token for API access'
+    required: true
+  weights:
+    description: 'JSON object with weights for diff, bug, and test factors (e.g., {"diff":0.4,"bug":0.4,"test":0.2})'
+    required: false
+    default: '{"diff":0.4,"bug":0.4,"test":0.2}'
+  since-days:
+    description: 'Number of days to look back for historical bug density'
+    required: false
+    default: '90'
+  fail-on-high:
+    description: 'Fail the workflow if risk score exceeds high threshold (70)'
+    required: false
+    default: 'false'
+outputs:
+  risk-score:
+    description: 'Computed risk score (0-100)'
+  risk-label:
+    description: 'Risk label (Low/Medium/High)'
+  total-changes:
+    description: 'Total lines changed in PR'
+  bug-density:
+    description: 'Historical bug density ratio (0-1)'
+  has-test-changes:
+    description: 'Whether test files were modified'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+branding:
+  icon: 'alert-triangle'
+  color: 'orange'

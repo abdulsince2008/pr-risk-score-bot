@@ -1,0 +1,30 @@
+{
+  "name": "pr-risk-score-bot",
+  "version": "1.0.0",
+  "description": "GitHub Action that computes a PR risk score from diff size, historical bug density, and test coverage changes",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build src/index.js -o dist --source-map --license licenses.txt",
+    "test": "node --test src/**/*.test.js",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "github-action",
+    "pr-risk",
+    "code-quality",
+    "risk-score"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0",
+    "simple-git": "^3.25.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

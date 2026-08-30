@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build output (dist/ is committed for GitHub Action distribution)
+# dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Local test files
+test-local.js
+
+# Environment
+.env
+.env.local
